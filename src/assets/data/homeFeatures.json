@@ -1,0 +1,6 @@
+[
+  { "id": "f1", "icon": "calendar-check-outline", "title": "Facil y rapido", "text": "Agenda en pocos pasos desde tu celular." },
+  { "id": "f2", "icon": "shield-check-outline", "title": "Profesionales de confianza", "text": "Personal verificado y altamente calificado." },
+  { "id": "f3", "icon": "star-four-points-outline", "title": "Calidad garantizada", "text": "Usamos productos y equipos de limpieza profesionales." },
+  { "id": "f4", "icon": "headset", "title": "Soporte", "text": "Estamos aqui para ayudarte ante cualquier consulta." }
+]

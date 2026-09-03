@@ -1,0 +1,43 @@
+{
+  "expo": {
+    "name": "Limpieza del Hogar",
+    "slug": "limpieza-hogar",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.joseapps.limpiezahogar"
+    },
+    "android": {
+      "package": "com.joseapps.limpiezahogar",
+      "edgeToEdgeEnabled": true,
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/images/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Permite a Limpieza del Hogar usar tu ubicacion para autocompletar tu direccion de servicio."
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "03a32c4d-53a8-4878-8041-3dddcbe75a1b"
+      }
+    },
+    "owner": "jlopezpe"
+  }
+}

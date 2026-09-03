@@ -1,0 +1,5 @@
+[
+  { "id": "b1", "icon": "shield-check-outline", "label": "Profesionales de confianza" },
+  { "id": "b2", "icon": "checkbox-marked-circle-outline", "label": "Productos de limpieza incluidos" },
+  { "id": "b3", "icon": "check-decagram-outline", "label": "Seguros y garantizados" }
+]

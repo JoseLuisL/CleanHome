@@ -1,0 +1,8 @@
+[
+  { "id": "s1", "label": "08:00 - 10:00", "availability": "normal" },
+  { "id": "s2", "label": "10:00 - 12:00", "availability": "normal" },
+  { "id": "s3", "label": "12:00 - 14:00", "availability": "normal" },
+  { "id": "s4", "label": "14:00 - 16:00", "availability": "normal" },
+  { "id": "s5", "label": "16:00 - 18:00", "availability": "low" },
+  { "id": "s6", "label": "18:00 - 20:00", "availability": "normal" }
+]

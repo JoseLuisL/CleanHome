@@ -1,0 +1,11 @@
+[
+  { "id": "hab1", "label": "1 Habitacion", "icon": "bed-single-outline", "price": 20 },
+  { "id": "hab2", "label": "2 Habitaciones", "icon": "bed-outline", "price": 35 },
+  { "id": "sala", "label": "Sala", "icon": "sofa-outline", "price": 15 },
+  { "id": "comedor", "label": "Comedor", "icon": "table-furniture", "price": 15 },
+  { "id": "cocina", "label": "Cocina", "icon": "stove", "price": 25 },
+  { "id": "banos", "label": "Banos", "icon": "shower", "price": 18 },
+  { "id": "estudio", "label": "Estudio / Oficina", "icon": "desk", "price": 20 },
+  { "id": "balcon", "label": "Balcon / Terraza", "icon": "flower-outline", "price": 12 },
+  { "id": "otros", "label": "Otros", "icon": "dots-horizontal-circle-outline", "price": 15 }
+]

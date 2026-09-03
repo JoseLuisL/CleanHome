@@ -1,0 +1,7 @@
+[
+  { "id": "d1", "weekday": "LUN", "day": "26" },
+  { "id": "d2", "weekday": "MAR", "day": "27" },
+  { "id": "d3", "weekday": "MIE", "day": "28" },
+  { "id": "d4", "weekday": "JUE", "day": "29" },
+  { "id": "d5", "weekday": "VIE", "day": "30" }
+]

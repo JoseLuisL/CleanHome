@@ -1,0 +1,22 @@
+[
+  {
+    "id": "express",
+    "title": "Limpieza Express",
+    "description": "Ideal para mantenimiento regular. Limpieza rapida y efectiva.",
+    "icon": "flash-outline",
+    "badge": "Recomendado",
+    "durationLabel": "Desde 1.5 h",
+    "priceFrom": 45,
+    "priceMultiplier": 1.0
+  },
+  {
+    "id": "profunda",
+    "title": "Limpieza Profunda",
+    "description": "Limpieza detallada en profundidad de todos los espacios.",
+    "icon": "star-four-points-outline",
+    "badge": null,
+    "durationLabel": "Desde 3 h",
+    "priceFrom": 89,
+    "priceMultiplier": 1.6
+  }
+]
