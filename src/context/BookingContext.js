@@ -12,6 +12,7 @@ const initialState = {
   cleaningType: null,  // id del tipo de limpieza
   date: null,          // id de fecha
   timeSlot: null,      // id de horario
+  district: null,      // id del distrito de Lima
   address: '',
   reference: '',
   phone: '',

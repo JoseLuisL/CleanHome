@@ -13,11 +13,12 @@ import {
   getCleaningTypes,
   getDates,
   getTimeSlots,
+  getDistricts,
 } from '../services/catalogService';
 import { calculateQuote, formatSoles } from '../services/pricingService';
 import { useBooking } from '../context/BookingContext';
 import { useAuth } from '../context/AuthContext';
-import { colors } from '../theme/theme';
+import { colors, layout } from '../theme/theme';
 
 
 /**
@@ -31,18 +32,19 @@ export default function ConfirmationScreen({ navigation }) {
   const [loading, setLoading] = useState(true);
   const [result, setResult] = useState(null);
   const [error, setError] = useState('');
-  const [labels, setLabels] = useState({ spaces: '', type: '', date: '', time: '' });
+  const [labels, setLabels] = useState({ spaces: '', type: '', date: '', time: '', district: '' });
   const [quote, setQuote] = useState({ lineItems: [], subtotal: 0, multiplier: 1, total: 0 });
 
   useEffect(() => {
     let mounted = true;
 
     async function build() {
-      const [spaces, types, dates, slots] = await Promise.all([
+      const [spaces, types, dates, slots, districts] = await Promise.all([
         getSpaces(),
         getCleaningTypes(),
         getDates(),
         getTimeSlots(),
+        getDistricts(),
       ]);
 
       const spacesLabel = spaces
@@ -52,6 +54,7 @@ export default function ConfirmationScreen({ navigation }) {
       const type = types.find((t) => t.id === booking.cleaningType);
       const date = dates.find((d) => d.id === booking.date);
       const slot = slots.find((s) => s.id === booking.timeSlot);
+      const district = districts.find((d) => d.id === booking.district);
 
       // Las fechas dinamicas ya traen la etiqueta completa en espanol.
       const dateLabel = date?.fullLabel || '-';
@@ -65,6 +68,7 @@ export default function ConfirmationScreen({ navigation }) {
         type: type ? type.title : '-',
         date: dateLabel,
         time: slot ? slot.label : '-',
+        district: district ? district.label : '-',
       });
       setQuote(q);
 
@@ -140,6 +144,7 @@ export default function ConfirmationScreen({ navigation }) {
             <SummaryRow label="Tipo de limpieza" value={labels.type} />
             <SummaryRow label="Fecha" value={labels.date} />
             <SummaryRow label="Horario" value={labels.time} />
+            <SummaryRow label="Distrito" value={labels.district} />
             <SummaryRow label="Direccion" value={booking.address || '-'} />
             {booking.reference ? (
               <SummaryRow label="Referencia" value={booking.reference} />
@@ -187,13 +192,32 @@ export default function ConfirmationScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: colors.surface },
-  stepperWrap: { paddingHorizontal: 20 },
-  loading: { flex: 1, alignItems: 'center', justifyContent: 'center', padding: 24 },
+  stepperWrap: {
+    paddingHorizontal: 20,
+    width: '100%',
+    maxWidth: layout.contentMaxWidth,
+    alignSelf: 'center',
+  },
+  loading: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 24,
+    width: '100%',
+    maxWidth: layout.contentMaxWidth,
+    alignSelf: 'center',
+  },
   loadingText: { color: colors.textSecondary, marginTop: 12 },
   errorTitle: { fontWeight: '700', color: colors.textPrimary, marginTop: 12 },
   errorText: { color: colors.textSecondary, textAlign: 'center', marginTop: 8 },
   errorBtn: { marginTop: 20, alignSelf: 'stretch' },
-  content: { padding: 20, paddingBottom: 24 },
+  content: {
+    padding: 20,
+    paddingBottom: 24,
+    width: '100%',
+    maxWidth: layout.contentMaxWidth,
+    alignSelf: 'center',
+  },
   successIcon: { alignItems: 'center', marginTop: 8, marginBottom: 12 },
   successTitle: { fontWeight: '700', color: colors.textPrimary, textAlign: 'center' },
   successText: { color: colors.textSecondary, textAlign: 'center', marginTop: 6, marginBottom: 22 },

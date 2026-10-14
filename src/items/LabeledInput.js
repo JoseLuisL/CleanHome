@@ -43,7 +43,8 @@ export default function LabeledInput({
         left={left}
         right={right}
         error={error}
-        style={styles.input}
+        style={[styles.input, multiline && styles.inputMultiline]}
+        contentStyle={multiline ? styles.contentMultiline : styles.content}
         outlineColor={colors.border}
         activeOutlineColor={colors.primary}
         outlineStyle={styles.outline}
@@ -65,6 +66,19 @@ const styles = StyleSheet.create({
   },
   input: {
     backgroundColor: colors.surface,
+  },
+  inputMultiline: {
+    // Altura comoda para campos de varias lineas (direccion, referencia).
+    minHeight: 88,
+  },
+  content: {
+    // Separacion vertical del texto respecto al borde en campos de una linea.
+    paddingVertical: 10,
+  },
+  contentMultiline: {
+    // El texto arranca separado del borde superior en vez de pegado.
+    paddingTop: 12,
+    paddingBottom: 12,
   },
   outline: {
     borderRadius: 12,

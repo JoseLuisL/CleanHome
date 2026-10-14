@@ -8,7 +8,7 @@ import { getUserBookings } from '../services/bookingService';
 import { getTimeSlots } from '../services/catalogService';
 import { formatSoles } from '../services/pricingService';
 import { useAuth } from '../context/AuthContext';
-import { colors } from '../theme/theme';
+import { colors, layout } from '../theme/theme';
 
 const WEEKDAYS = ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
 const MONTHS = [
@@ -104,10 +104,23 @@ export default function BookingHistoryScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: colors.background },
-  center: { flex: 1, alignItems: 'center', justifyContent: 'center', padding: 24 },
+  center: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 24,
+    width: '100%',
+    maxWidth: layout.contentMaxWidth,
+    alignSelf: 'center',
+  },
   emptyTitle: { fontWeight: '700', color: colors.textPrimary, marginTop: 12 },
   emptyText: { color: colors.textSecondary, textAlign: 'center', marginTop: 6 },
-  content: { padding: 20 },
+  content: {
+    padding: 20,
+    width: '100%',
+    maxWidth: layout.contentMaxWidth,
+    alignSelf: 'center',
+  },
   card: {
     flexDirection: 'row',
     alignItems: 'center',

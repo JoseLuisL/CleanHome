@@ -10,7 +10,7 @@ import { getBenefits, getHomeFeatures } from '../services/catalogService';
 import { getCurrentLocation, mapLocationError } from '../services/locationService';
 import { useAuth } from '../context/AuthContext';
 import { useBooking } from '../context/BookingContext';
-import { colors } from '../theme/theme';
+import { colors, layout } from '../theme/theme';
 
 /**
  * Pantalla 1 - Inicio.
@@ -140,11 +140,24 @@ export default function HomeScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: colors.background },
-  header: { backgroundColor: colors.background, elevation: 0, justifyContent: 'space-between' },
+  header: {
+    backgroundColor: colors.background,
+    elevation: 0,
+    justifyContent: 'space-between',
+    width: '100%',
+    maxWidth: layout.contentMaxWidth,
+    alignSelf: 'center',
+  },
   headerSpacer: { width: 48 },
   location: { flexDirection: 'row', alignItems: 'center', flex: 1, justifyContent: 'center', paddingHorizontal: 8 },
   locationText: { fontWeight: '700', color: colors.textPrimary, marginHorizontal: 4, flexShrink: 1 },
-  content: { padding: 20, paddingBottom: 32 },
+  content: {
+    padding: 20,
+    paddingBottom: 32,
+    width: '100%',
+    maxWidth: layout.contentMaxWidth,
+    alignSelf: 'center',
+  },
   greeting: { fontWeight: '700', color: colors.textPrimary },
   subtitle: { color: colors.textSecondary, marginTop: 4, marginBottom: 20 },
   mainCard: { backgroundColor: colors.surface, borderRadius: 20, overflow: 'hidden', marginBottom: 24 },

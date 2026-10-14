@@ -9,6 +9,7 @@ import cleaningTypes from '../assets/data/cleaningTypes.json';
 import timeSlots from '../assets/data/timeSlots.json';
 import benefits from '../assets/data/benefits.json';
 import homeFeatures from '../assets/data/homeFeatures.json';
+import districts from '../assets/data/districts.json';
 import { fetchHomeFeatures, fetchHomeBenefits, fetchHomeSpaces } from '../firebase/catalogRemoteService';
 // import api from './api';
 
@@ -18,6 +19,9 @@ const simulateLatency = (data, ms = 250) =>
 //export const getSpaces = () => simulateLatency(spaces);
 export const getCleaningTypes = () => simulateLatency(cleaningTypes);
 export const getTimeSlots = () => simulateLatency(timeSlots);
+
+/** Distritos de Lima Metropolitana para el selector de ubicacion. */
+export const getDistricts = () => simulateLatency(districts);
 
 // Etiquetas en espanol para construir las fechas dinamicas.
 const WEEKDAYS_ES = ['DOM', 'LUN', 'MAR', 'MIE', 'JUE', 'VIE', 'SAB'];
@@ -56,6 +60,13 @@ export const getDates = (count = 7) => {
 export const getSpaces = async() =>{
   try{
     const remoteSpaces = await fetchHomeSpaces();
+
+    // Log de depuracion: cuantos espacios llegaron y su contenido.
+    console.log('[getSpaces] remoteSpaces count:', remoteSpaces.length);
+    remoteSpaces.forEach((element) => {
+      console.log('[getSpaces] remoteSpace -->', JSON.stringify(element));
+    });
+
     return remoteSpaces.length ? remoteSpaces : spaces;
   }catch(e){
     console.log('[getSpaces] fallback a JSON local:', e.code || e.message);
@@ -100,4 +111,5 @@ export default {
   getDates,
   getBenefits,
   getHomeFeatures,
+  getDistricts,
 };

@@ -6,7 +6,7 @@ import { Text, Icon, TextInput, Snackbar, Button } from 'react-native-paper';
 import LabeledInput from '../items/LabeledInput';
 import PrimaryButton from '../items/PrimaryButton';
 import { useAuth } from '../context/AuthContext';
-import { colors } from '../theme/theme';
+import { colors, layout } from '../theme/theme';
 
 /**
  * Pantalla de inicio de sesion.
@@ -140,7 +140,14 @@ export default function LoginScreen({ navigation }) {
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: colors.surface },
   flex: { flex: 1 },
-  content: { padding: 24, paddingTop: 32, flexGrow: 1 },
+  content: {
+    padding: 24,
+    paddingTop: 32,
+    flexGrow: 1,
+    width: '100%',
+    maxWidth: layout.contentMaxWidth,
+    alignSelf: 'center',
+  },
   logo: {
     alignSelf: 'center',
     width: 96,

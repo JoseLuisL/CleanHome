@@ -14,7 +14,6 @@
     },
     "android": {
       "package": "com.joseapps.limpiezahogar",
-      "edgeToEdgeEnabled": true,
       "permissions": [
         "ACCESS_COARSE_LOCATION",
         "ACCESS_FINE_LOCATION",
@@ -31,7 +30,10 @@
         {
           "locationAlwaysAndWhenInUsePermission": "Permite a Limpieza del Hogar usar tu ubicacion para autocompletar tu direccion de servicio."
         }
-      ]
+      ],
+      "expo-build-properties",
+      "expo-status-bar",
+      "expo-font"
     ],
     "extra": {
       "eas": {

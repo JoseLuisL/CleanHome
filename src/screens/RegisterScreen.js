@@ -6,7 +6,7 @@ import { Text, TextInput, Snackbar, Appbar } from 'react-native-paper';
 import LabeledInput from '../items/LabeledInput';
 import PrimaryButton from '../items/PrimaryButton';
 import { useAuth } from '../context/AuthContext';
-import { colors } from '../theme/theme';
+import { colors, layout } from '../theme/theme';
 
 /**
  * Pantalla de registro.
@@ -157,8 +157,21 @@ export default function RegisterScreen({ navigation }) {
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: colors.surface },
   flex: { flex: 1 },
-  header: { backgroundColor: colors.surface, elevation: 0 },
-  content: { padding: 24, paddingTop: 8, flexGrow: 1 },
+  header: {
+    backgroundColor: colors.surface,
+    elevation: 0,
+    width: '100%',
+    maxWidth: layout.contentMaxWidth,
+    alignSelf: 'center',
+  },
+  content: {
+    padding: 24,
+    paddingTop: 8,
+    flexGrow: 1,
+    width: '100%',
+    maxWidth: layout.contentMaxWidth,
+    alignSelf: 'center',
+  },
   title: { fontWeight: '700', color: colors.textPrimary },
   subtitle: { color: colors.textSecondary, marginTop: 6, marginBottom: 24 },
   field: { marginBottom: 16 },

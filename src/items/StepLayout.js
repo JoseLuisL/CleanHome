@@ -1,12 +1,11 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import { ScrollView } from 'react-native';
+import { StyleSheet, View, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import ScreenHeader from './ScreenHeader';
 import Stepper from './Stepper';
 import PrimaryButton from './PrimaryButton';
-import { colors } from '../theme/theme';
+import { colors, layout } from '../theme/theme';
 
 /**
  * Layout comun para las pantallas del flujo:
@@ -25,27 +24,37 @@ export default function StepLayout({
 }) {
   return (
     <SafeAreaView style={styles.safe} edges={['top', 'bottom']}>
-      <ScreenHeader title={title} onBack={onBack} />
-      <View style={styles.stepperWrap}>
-        <Stepper total={totalSteps} current={step} />
-      </View>
-
-      <ScrollView
-        contentContainerStyle={styles.content}
-        showsVerticalScrollIndicator={false}
+      <KeyboardAvoidingView
+        style={styles.flex}
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       >
-        {children}
-      </ScrollView>
+        <ScreenHeader title={title} onBack={onBack} />
+        <View style={styles.stepperWrap}>
+          <Stepper total={totalSteps} current={step} />
+        </View>
 
-      <View style={styles.footer}>
-        <PrimaryButton
-          onPress={onButtonPress}
-          disabled={buttonDisabled}
-          loading={buttonLoading}
+        <ScrollView
+          style={styles.scroll}
+          contentContainerStyle={styles.content}
+          showsVerticalScrollIndicator={false}
+          keyboardShouldPersistTaps="handled"
+          keyboardDismissMode="interactive"
         >
-          {buttonLabel}
-        </PrimaryButton>
-      </View>
+          {children}
+        </ScrollView>
+
+        <View style={styles.footer}>
+          <View style={styles.footerInner}>
+            <PrimaryButton
+              onPress={onButtonPress}
+              disabled={buttonDisabled}
+              loading={buttonLoading}
+            >
+              {buttonLabel}
+            </PrimaryButton>
+          </View>
+        </View>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 }
@@ -55,17 +64,33 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.surface,
   },
+  flex: {
+    flex: 1,
+  },
   stepperWrap: {
+    width: '100%',
+    maxWidth: layout.contentMaxWidth,
+    alignSelf: 'center',
     paddingHorizontal: 20,
+  },
+  scroll: {
+    width: '100%',
+    maxWidth: layout.contentMaxWidth,
+    alignSelf: 'center',
   },
   content: {
     padding: 20,
     paddingBottom: 24,
   },
   footer: {
-    padding: 20,
     borderTopWidth: 1,
     borderTopColor: colors.border,
     backgroundColor: colors.surface,
+  },
+  footerInner: {
+    width: '100%',
+    maxWidth: layout.contentMaxWidth,
+    alignSelf: 'center',
+    padding: 20,
   },
 });

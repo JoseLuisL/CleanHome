@@ -11,7 +11,9 @@ import { db } from './firestore';
 export async function fetchHomeSpaces() {
   const spacesQuery = query(collection(db, 'homeSpaces'), orderBy('order'));
   const objSpaces = await getDocs(spacesQuery);
+  
   return objSpaces.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+  
 }
 
 /**

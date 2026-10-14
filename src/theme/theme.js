@@ -19,6 +19,16 @@ export const colors = {
   chipWarningText: '#B45309',
 };
 
+/**
+ * Constantes de layout.
+ * CONTENT_MAX_WIDTH limita el ancho del contenido en pantallas grandes
+ * (web/desktop) para que no se estire a todo lo ancho; en movil la pantalla
+ * es mas angosta que este valor, asi que no afecta.
+ */
+export const layout = {
+  contentMaxWidth: 480,
+};
+
 const theme = {
   ...MD3LightTheme,
   roundness: 3,

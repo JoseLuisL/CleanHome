@@ -5,7 +5,6 @@ import { Text, Icon } from 'react-native-paper';
 import StepLayout from '../items/StepLayout';
 import SelectableTile from '../items/SelectableTile';
 import { getSpaces } from '../services/catalogService';
-import { calculateQuote, formatSoles } from '../services/pricingService';
 import { useBooking } from '../context/BookingContext';
 import { colors } from '../theme/theme';
 
@@ -27,10 +26,6 @@ export default function JobDetailsScreen({ navigation }) {
   }
 
   const count = booking.spaces.length;
-
-  // Subtotal de los espacios seleccionados (sin multiplicador; el tipo de
-  // limpieza se elige en el paso siguiente).
-  const { subtotal } = calculateQuote(spaces, booking.spaces, null);
 
   return (
     <StepLayout
@@ -67,10 +62,6 @@ export default function JobDetailsScreen({ navigation }) {
 
       <View style={styles.summary}>
         <Text variant="bodyMedium" style={styles.counter}>{count} seleccionados</Text>
-        <View style={styles.subtotalRow}>
-          <Text variant="bodyMedium" style={styles.subtotalLabel}>Subtotal</Text>
-          <Text variant="titleMedium" style={styles.subtotalValue}>{formatSoles(subtotal)}</Text>
-        </View>
       </View>
     </StepLayout>
   );
@@ -93,15 +84,4 @@ const styles = StyleSheet.create({
   filler: { flex: 1 },
   summary: { marginTop: 10 },
   counter: { color: colors.textSecondary, fontWeight: '600' },
-  subtotalRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginTop: 8,
-    paddingTop: 12,
-    borderTopWidth: 1,
-    borderTopColor: colors.border,
-  },
-  subtotalLabel: { color: colors.textSecondary, fontWeight: '600' },
-  subtotalValue: { color: colors.primary, fontWeight: '700' },
 });
