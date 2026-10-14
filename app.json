@@ -21,9 +21,7 @@
         "android.permission.ACCESS_FINE_LOCATION"
       ]
     },
-    "web": {
-      "favicon": "./assets/images/favicon.png"
-    },
+    "web": {},
     "plugins": [
       [
         "expo-location",
